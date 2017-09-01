@@ -1,0 +1,7 @@
+<launch>
+    <include file="$(find hokuyo_node)/launch/hokuyo_test.launch" />
+     <include file="$(find dynamixel_tilt)/launch/controller_manager.launch" />
+     <include file="$(find dynamixel_tilt)/launch/laser_scan_assembler.launch" />
+<!--  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find dynamixel_tilt)/rviz/hokuyo_tilt.rviz" />-->
+
+</launch>

@@ -1,0 +1,9 @@
+<launch>
+  <node type="laser_scan_assembler" pkg="laser_assembler" name="my_assembler">
+	<!--scan frame-->
+    <remap from="scan" to="/scan"/>
+    <param name="max_scans" type="int" value="400" />
+	<!--fixed frame,scan frame is rotate-->
+    <param name="fixed_frame" type="string" value="base_tilt" />
+  </node>
+</launch>

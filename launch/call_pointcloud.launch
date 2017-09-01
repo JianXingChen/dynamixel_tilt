@@ -1,0 +1,23 @@
+<!-- -*- mode: XML -*- -->
+
+<launch>
+  <arg name="motor_speed" default="1"/>    <!-- pi*default .Rotate a circle cost 1/default second-->
+  <arg name="call_period" default="0.5"/>    <!-- how long call a frame assemble point cloud . unit is s (second) ,we should set this value to 1/dedault -->
+  <arg name="point_scan" default="sync_scan_cloud_filtered"/>  <!--pointcloud topic name-->
+  <arg name="point_frame" default="/camera"/>   <!-- point cloud frame_id-->
+    <!-- start tilt command node -->
+  <node name="tilt_cycle"     pkg="dynamixel_tilt" type="motor_tilt_node" output="screen">
+  <param name="motor_speed" type="double" value="$(arg motor_speed)" />
+  </node>
+  <!-- assemble tilt command node -->
+
+  <node name="call_assemble"  pkg="dynamixel_tilt" type="call_assemble"    output="screen">
+    <param name="call_period" type="double" value="$(arg call_period)" />
+      </node>
+
+<!--tilt laserScan to  point which fixefd to base_tilt-->
+<!--     <node name="tfScan2Base"  pkg="dynamixel_tilt" type="tfScan2Base"    output="screen">
+     <param name="point_scan" type="string" value="$(arg point_scan)" />
+      <param name="point_frame" type="string" value="$(arg point_frame)" />
+     </node>-->
+</launch>
